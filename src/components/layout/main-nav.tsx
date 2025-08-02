@@ -4,19 +4,19 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { LayoutDashboard, ListChecks, FileText, Cog, Users, Bot, GitBranch, FolderGit2, Blocks, LineChart } from "lucide-react"
+import { LayoutDashboard, ListChecks, FileText, Cog, Users, Bot, GitBranch, Blocks, LineChart, Settings, FolderKanban, FileJson, GitFork, BarChart3, Puzzle, BrainCircuit } from "lucide-react"
 import { useSidebar } from "../ui/sidebar"
 
 const navItems = [
     { href: '/', label: 'Dashboard', icon: LayoutDashboard },
-    { href: '/tasks', label: 'Tasks', icon: ListChecks },
+    { href: '/tasks', label: 'Tasks', icon: FolderKanban },
     { href: '/documents', label: 'Documents', icon: FileText },
-    { href: '/workflows', label: 'Workflows', icon: GitBranch },
-    { href: '/modules', label: 'Modules', icon: Blocks },
-    { href: '/analytics', label: 'Analytics', icon: LineChart },
+    { href: '/workflows', label: 'Workflows', icon: GitFork },
+    { href: '/modules', label: 'Modules', icon: Puzzle },
+    { href: '/analytics', label: 'Analytics', icon: BarChart3 },
     { href: '/team', label: 'Team', icon: Users },
-    { href: '/assistant', label: 'AI Assistant', icon: Bot },
-    { href: '/settings', label: 'Settings', icon: Cog },
+    { href: '/assistant', label: 'AI Assistant', icon: BrainCircuit },
+    { href: '/settings', label: 'Settings', icon: Settings },
 ]
 
 export function MainNav({ isMobile = false }: { isMobile?: boolean }) {
@@ -38,7 +38,8 @@ export function MainNav({ isMobile = false }: { isMobile?: boolean }) {
                             className={cn(
                                 "flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8",
                                 linkClasses,
-                                isActive && activeClasses
+                                isActive && "text-primary hover:text-primary",
+                                !isActive && "hover:text-sidebar-foreground",
                             )}
                         >
                             <item.icon className="h-5 w-5" />
@@ -55,11 +56,10 @@ export function MainNav({ isMobile = false }: { isMobile?: boolean }) {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary",
+                    "flex items-center gap-3 rounded-lg px-3 py-2 transition-all",
                     linkClasses,
-                    isActive && activeClasses,
-                    isActive && isMobile && "text-sidebar-accent-foreground",
-                    isActive && !isMobile && "text-primary"
+                    isActive && "text-primary font-semibold",
+                    !isActive && "hover:text-sidebar-foreground"
                 )}
             >
                 <item.icon className="h-4 w-4" />
