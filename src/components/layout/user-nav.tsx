@@ -19,7 +19,7 @@ import {
   DropdownMenuPortal,
   DropdownMenuSubContent
 } from "@/components/ui/dropdown-menu"
-import { CreditCard, LogOut, Settings, User, Monitor, Moon, Sun } from "lucide-react"
+import { CreditCard, LogOut, Settings, User, Monitor, Moon, Sun, Rocket } from "lucide-react"
 import { useTheme } from "next-themes"
 
 export function UserNav() {
@@ -73,6 +73,10 @@ export function UserNav() {
                 <DropdownMenuItem onClick={() => setTheme("dark")}>
                   <Moon className="mr-2 h-4 w-4" />
                   <span>Dark</span>
+                </DropdownMenuItem>
+                 <DropdownMenuItem onClick={() => setTheme("pro")}>
+                  <Rocket className="mr-2 h-4 w-4" />
+                  <span>Pro</span>
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => setTheme("system")}>
                   <Monitor className="mr-2 h-4 w-4" />
