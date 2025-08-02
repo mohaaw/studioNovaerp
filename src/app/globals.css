@@ -83,5 +83,6 @@
   }
   body {
     @apply bg-background text-foreground;
+    opacity: 0.9;
   }
 }
