@@ -28,7 +28,7 @@ export function Header() {
                     <div className="flex h-[60px] items-center px-6 border-b">
                         <a href="/" className="flex items-center gap-2 font-semibold font-headline">
                              <Package className="h-6 w-6" />
-                            <span>MeERP</span>
+                            <span>NovaX ERP</span>
                         </a>
                     </div>
                     <MainNav isMobile={true} />

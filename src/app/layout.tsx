@@ -20,8 +20,8 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'MeERP Simplified',
-  description: 'A modern, AI-powered ERP system.',
+  title: 'NovaX ERP',
+  description: 'A modular, AI-powered ERP system from the future.',
 };
 
 export default function RootLayout({
@@ -30,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="dark">
       <body className={cn('font-body antialiased', inter.variable, spaceGrotesk.variable)}>
         <SidebarProvider>
           <Sidebar>
@@ -39,7 +39,7 @@ export default function RootLayout({
                 <Button variant="ghost" size="icon" className="h-9 w-9 bg-primary/20 text-primary-foreground hover:bg-primary/30">
                   <Package className="h-5 w-5" />
                 </Button>
-                <h1 className="text-xl font-headline font-semibold">MeERP</h1>
+                <h1 className="text-xl font-headline font-semibold">NovaX ERP</h1>
               </div>
             </SidebarHeader>
             <SidebarContent>

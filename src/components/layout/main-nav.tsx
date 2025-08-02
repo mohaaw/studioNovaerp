@@ -4,7 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
-import { LayoutDashboard, ListChecks, FileText, Cog, Users, Bot, GitBranch, FolderGit2 } from "lucide-react"
+import { LayoutDashboard, ListChecks, FileText, Cog, Users, Bot, GitBranch, FolderGit2, Blocks } from "lucide-react"
 import { useSidebar } from "../ui/sidebar"
 
 const navItems = [
@@ -12,6 +12,7 @@ const navItems = [
     { href: '/tasks', label: 'Tasks', icon: ListChecks },
     { href: '/documents', label: 'Documents', icon: FileText },
     { href: '/workflows', label: 'Workflows', icon: GitBranch },
+    { href: '/modules', label: 'Modules', icon: Blocks },
     { href: '/team', label: 'Team', icon: Users },
     { href: '/assistant', label: 'AI Assistant', icon: Bot },
     { href: '/settings', label: 'Settings', icon: Cog },
