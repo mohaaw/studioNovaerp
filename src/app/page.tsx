@@ -2,10 +2,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { KpiCard } from "@/components/dashboard/kpi-card"
 import { OverviewChart } from "@/components/dashboard/overview-chart"
 import { TasksByStatusChart } from "@/components/dashboard/tasks-by-status-chart"
-import { Activity, ArrowDown, ArrowUp, DollarSign, ListChecks, Users, FileClock } from "lucide-react"
+import { Activity, DollarSign, ListChecks, Users } from "lucide-react"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { mockTasks } from "@/lib/data"
 
 const recentActivities = [
   { user: { name: 'Alice Johnson', avatar: 'https://placehold.co/32x32/D0BFFF/47386B.png' }, action: 'closed deal "Project Titan"', timestamp: '5m ago' },
@@ -13,6 +14,8 @@ const recentActivities = [
   { user: { name: 'Bob Williams', avatar: 'https://placehold.co/32x32/ADD8E6/2E4D56.png' }, action: 'updated task "Fix login bug"', timestamp: '2h ago' },
   { user: { name: 'AI Assistant', avatar: '' }, action: 'flagged inventory "SKU-123" for reorder', timestamp: '3h ago' },
 ]
+
+const highPriorityTasks = mockTasks.filter(task => task.priority === 'High').slice(0, 5);
 
 
 export default function DashboardPage() {
@@ -66,50 +69,53 @@ export default function DashboardPage() {
         </Card>
       </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle className="font-headline">System Log</CardTitle>
-          <CardDescription>A log of recent significant events in the system.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Event</TableHead>
-                <TableHead>User</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Date</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell className="font-medium">AI insight generated for 'Project Andromeda'</TableCell>
-                <TableCell>AI Assistant</TableCell>
-                <TableCell><Badge variant="outline">Completed</Badge></TableCell>
-                <TableCell>2023-10-26</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Project 'Phoenix' moved to 'Done'</TableCell>
-                <TableCell>Bob Williams</TableCell>
-                <TableCell><Badge>Success</Badge></TableCell>
-                <TableCell>2023-10-25</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">New user 'Charlie Brown' invited</TableCell>
-                <TableCell>Admin</TableCell>
-                <TableCell><Badge variant="outline">Completed</Badge></TableCell>
-                <TableCell>2023-10-24</TableCell>
-              </TableRow>
-               <TableRow>
-                <TableCell className="font-medium">Workflow 'Invoice Approval' triggered</TableCell>
-                <TableCell>System</TableCell>
-                <TableCell><Badge variant="secondary">In Progress</Badge></TableCell>
-                <TableCell>2023-10-23</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+      <div className="grid gap-4 lg:grid-cols-2">
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-headline">Tasks by Status</CardTitle>
+            <CardDescription>A breakdown of all tasks in the system.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <TasksByStatusChart />
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className="font-headline">High Priority Tasks</CardTitle>
+            <CardDescription>Top priority tasks that require attention.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Task</TableHead>
+                  <TableHead>Assignee</TableHead>
+                  <TableHead>Status</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {highPriorityTasks.map((task) => (
+                    <TableRow key={task.id}>
+                        <TableCell className="font-medium">{task.title}</TableCell>
+                        <TableCell>
+                            <div className="flex items-center gap-2">
+                                <Avatar className="h-6 w-6">
+                                    <AvatarImage src={task.assignee.avatarUrl} alt={task.assignee.name} />
+                                    <AvatarFallback>{task.assignee.name.charAt(0)}</AvatarFallback>
+                                </Avatar>
+                                <span className="text-sm text-muted-foreground">{task.assignee.name}</span>
+                            </div>
+                        </TableCell>
+                        <TableCell>
+                            <Badge variant="outline">{task.status}</Badge>
+                        </TableCell>
+                    </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   )
 }
