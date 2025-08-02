@@ -5,13 +5,7 @@ import {
   ChartContainer,
   ChartTooltipContent,
 } from "@/components/ui/chart"
-
-const data = [
-  { status: "To Do", count: 25, fill: "hsl(var(--chart-1))" },
-  { status: "In Progress", count: 45, fill: "hsl(var(--chart-2))" },
-  { status: "In Review", count: 15, fill: "hsl(var(--chart-3))" },
-  { status: "Done", count: 85, fill: "hsl(var(--chart-4))" },
-]
+import { useEffect, useState } from "react"
 
 const chartConfig = {
   count: {
@@ -20,6 +14,18 @@ const chartConfig = {
 }
 
 export function TasksByStatusChart() {
+    const [data, setData] = useState<any[]>([]);
+
+    useEffect(() => {
+        const generatedData = [
+            { status: "To Do", count: 25, fill: "hsl(var(--chart-1))" },
+            { status: "In Progress", count: 45, fill: "hsl(var(--chart-2))" },
+            { status: "In Review", count: 15, fill: "hsl(var(--chart-3))" },
+            { status: "Done", count: 85, fill: "hsl(var(--chart-4))" },
+          ];
+        setData(generatedData);
+    }, []);
+
   return (
     <ChartContainer config={chartConfig} className="h-[300px] w-full">
         <ResponsiveContainer width="100%" height="100%">
