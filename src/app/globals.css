@@ -103,7 +103,7 @@
     --chart-4: 340 100% 75%;
     --chart-5: 220 100% 75%;
 
-    --sidebar-background: 265 60% 9%;
+    --sidebar-background: 265 60% 9% / 0.5;
     --sidebar-foreground: 240 10% 83%;
     --sidebar-primary: 340 100% 75%;
     --sidebar-primary-foreground: 265 60% 9%;
@@ -122,6 +122,9 @@
     @apply bg-background text-foreground;
   }
   .pro .bg-card {
+    @apply backdrop-blur-md;
+  }
+  .pro [data-sidebar='sidebar'] {
     @apply backdrop-blur-md;
   }
 }

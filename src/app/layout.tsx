@@ -66,7 +66,7 @@ export default function RootLayout({
             </Sidebar>
             <SidebarInset>
               <Header />
-              <main className="flex-1 p-4 md:p-6 lg:p-8">
+              <main className="flex-1 p-4 md:p-6 lg:p-8 animate-fade-in">
                 {children}
               </main>
             </SidebarInset>
