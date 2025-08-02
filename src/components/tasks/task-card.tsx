@@ -8,9 +8,9 @@ interface TaskCardProps {
 }
 
 const priorityClasses = {
-  High: "bg-red-500/20 text-red-700 border-red-500/30",
-  Medium: "bg-yellow-500/20 text-yellow-700 border-yellow-500/30",
-  Low: "bg-green-500/20 text-green-700 border-green-500/30",
+  High: "border-transparent bg-destructive/20 text-destructive-foreground hover:bg-destructive/30",
+  Medium: "border-transparent bg-primary/20 text-primary-foreground hover:bg-primary/30",
+  Low: "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
 }
 
 export function TaskCard({ task }: TaskCardProps) {
