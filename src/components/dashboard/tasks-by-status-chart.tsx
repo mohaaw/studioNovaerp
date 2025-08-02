@@ -1,5 +1,5 @@
 "use client"
-import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
+import { Pie, PieChart, ResponsiveContainer, Tooltip, Legend } from "recharts"
 
 import {
   ChartContainer,
@@ -7,9 +7,32 @@ import {
 } from "@/components/ui/chart"
 import { useEffect, useState } from "react"
 
+const chartData = [
+  { status: "To Do", count: 25, fill: "hsl(var(--chart-1))" },
+  { status: "In Progress", count: 45, fill: "hsl(var(--chart-2))" },
+  { status: "In Review", count: 15, fill: "hsl(var(--chart-3))" },
+  { status: "Done", count: 85, fill: "hsl(var(--chart-4))" },
+]
+
 const chartConfig = {
   count: {
     label: "Tasks",
+  },
+  "To Do": {
+    label: "To Do",
+    color: "hsl(var(--chart-1))",
+  },
+  "In Progress": {
+    label: "In Progress",
+    color: "hsl(var(--chart-2))",
+  },
+  "In Review": {
+    label: "In Review",
+    color: "hsl(var(--chart-3))",
+  },
+  "Done": {
+    label: "Done",
+    color: "hsl(var(--chart-4))",
   },
 }
 
@@ -17,13 +40,7 @@ export function TasksByStatusChart() {
     const [data, setData] = useState<any[]>([]);
 
     useEffect(() => {
-        const generatedData = [
-            { status: "To Do", count: 25, fill: "hsl(var(--chart-1))" },
-            { status: "In Progress", count: 45, fill: "hsl(var(--chart-2))" },
-            { status: "In Review", count: 15, fill: "hsl(var(--chart-3))" },
-            { status: "Done", count: 85, fill: "hsl(var(--chart-4))" },
-          ];
-        setData(generatedData);
+        setData(chartData);
     }, []);
 
   return (
@@ -45,6 +62,12 @@ export function TasksByStatusChart() {
             paddingAngle={5}
             labelLine={false}
           />
+          <Legend
+            layout="horizontal"
+            verticalAlign="bottom"
+            align="center"
+            wrapperStyle={{ paddingBottom: '20px' }}
+           />
         </PieChart>
       </ResponsiveContainer>
     </ChartContainer>
