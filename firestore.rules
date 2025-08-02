@@ -1,0 +1,109 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper function to check user roles
+    function isRole(role) {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == role;
+    }
+
+    function isPremium() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.subscriptionStatus == 'premium';
+    }
+
+    // Users: Can read their own profile, admins can read/write any.
+    match /users/{userId} {
+      allow read: if request.auth.uid == userId || isRole('Admin');
+      allow write: if isRole('Admin');
+      allow create: if isRole('Admin');
+    }
+
+    // Modules: All authenticated users can read. Admins can write.
+    match /modules/{moduleId} {
+      allow read: if request.auth.uid != null;
+      allow write: if isRole('Admin');
+    }
+
+    // Settings: Admins can read/write.
+    match /settings/{settingId} {
+      allow read, write: if isRole('Admin');
+    }
+
+    // Translations: All authenticated users can read. Admins can write.
+    match /translations/{lang}/{stringId} {
+        allow read: if request.auth.uid != null;
+        allow write: if isRole('Admin');
+    }
+
+    // Master Data
+    match /products/{productId} {
+        allow read: if isRole('Inventory') || isRole('Sales') || isRole('Admin');
+        allow write: if isRole('Inventory') || isRole('Admin');
+    }
+    match /customers/{customerId} {
+        allow read: if isRole('Sales') || isRole('Admin');
+        allow write: if isRole('Sales') || isRole('Admin');
+    }
+     match /suppliers/{supplierId} {
+        allow read: if isRole('Inventory') || isRole('Admin');
+        allow write: if isRole('Inventory') || isRole('Admin');
+    }
+
+    // Transactions
+    match /transactions/{transactionId} {
+        // Example: Only sales and admins can see/create sales transactions
+        allow read, create: if (resource.data.type == 'sales' && (isRole('Sales') || isRole('Admin')));
+        // Example: Only inventory and admins can see/create inventory transactions
+        allow read, create: if (resource.data.type == 'inventory' && (isRole('Inventory') || isRole('Admin')));
+    }
+
+    // --- Advanced/Premium Feature Data ---
+
+    // Cosmic Insights (AI Recommendations)
+    match /cosmic_insights/{insightId} {
+        allow read: if isPremium();
+    }
+
+    // Prophecy Pricing & Discounting
+    match /prophecy_pricing/{ruleId} {
+        allow read: if isRole('Sales') || isRole('Admin');
+        allow write: if isRole('Admin');
+    }
+    
+    // Neural Network Automation Engine (Workflows)
+    match /automation_workflows/{workflowId} {
+        allow read, write: if isRole('Admin');
+    }
+
+    // Hyper-Secure Blockchain Ledger (Example: for critical logs)
+    match /blockchain_ledger/{blockId} {
+      allow read: if isRole('Admin');
+      // No one can update/delete
+      allow create: if isPremium() && isRole('Admin');
+      allow update, delete: if false;
+    }
+
+    // Interstellar Compliance Guardian
+    match /compliance_rules/{ruleId} {
+        allow read: if isRole('Admin');
+        allow write: if isRole('Admin');
+    }
+
+    // Predictive Fraud Detection
+    match /fraud_alerts/{alertId} {
+        allow read: if isRole('Admin') || isRole('Finance');
+    }
+
+    // Digital Twin Creation
+    match /digital_twins/{twinId} {
+        allow read: if isPremium();
+        allow write: if isRole('Admin');
+    }
+    
+    // Customer Sentiment Analysis
+    match /sentiment_analysis/{analysisId} {
+        allow read: if isRole('Sales') || isRole('Admin');
+    }
+  }
+}
