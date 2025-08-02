@@ -27,7 +27,7 @@ export default function TeamPage() {
         </Button>
       </div>
 
-      <Card>
+      <Card className="bg-card">
         <CardHeader>
           <CardTitle className="font-headline">Users</CardTitle>
           <CardDescription>A list of all users in your organization.</CardDescription>
