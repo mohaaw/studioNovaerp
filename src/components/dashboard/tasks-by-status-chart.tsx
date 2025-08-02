@@ -1,0 +1,46 @@
+"use client"
+import { Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts"
+
+import {
+  ChartContainer,
+  ChartTooltipContent,
+} from "@/components/ui/chart"
+
+const data = [
+  { status: "To Do", count: 25, fill: "hsl(var(--chart-1))" },
+  { status: "In Progress", count: 45, fill: "hsl(var(--chart-2))" },
+  { status: "In Review", count: 15, fill: "hsl(var(--chart-3))" },
+  { status: "Done", count: 85, fill: "hsl(var(--chart-4))" },
+]
+
+const chartConfig = {
+  count: {
+    label: "Tasks",
+  },
+}
+
+export function TasksByStatusChart() {
+  return (
+    <ChartContainer config={chartConfig} className="h-[300px] w-full">
+        <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Tooltip
+            cursor={false}
+            content={<ChartTooltipContent hideLabel indicator="dot" />}
+          />
+          <Pie
+            data={data}
+            dataKey="count"
+            nameKey="status"
+            cx="50%"
+            cy="50%"
+            outerRadius={100}
+            innerRadius={60}
+            paddingAngle={5}
+            labelLine={false}
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </ChartContainer>
+  )
+}
