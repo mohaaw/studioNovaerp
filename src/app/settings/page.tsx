@@ -12,7 +12,7 @@ import {
   Factory, 
   Truck, 
   Globe, 
-  Link, 
+  Link as LinkIcon, 
   SlidersHorizontal,
   BrainCircuit,
   FileLock
@@ -89,7 +89,7 @@ const settingsModules = [
    {
     title: "Integrations",
     description: "Connect with third-party services like payment gateways and APIs.",
-    icon: <Link className="h-8 w-8 text-primary" />,
+    icon: <LinkIcon className="h-8 w-8 text-primary" />,
     href: "#"
   },
   {
