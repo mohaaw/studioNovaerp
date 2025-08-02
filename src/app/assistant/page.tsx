@@ -1,6 +1,6 @@
 import { ChatForm } from "@/components/assistant/chat-form";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Bot, MessageSquare, Workflow } from "lucide-react";
+import { Bot, MessageSquare, Sparkles, Workflow } from "lucide-react";
 
 export default function AssistantPage() {
   return (
