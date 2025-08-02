@@ -24,11 +24,11 @@ export function Header() {
                         <span className="sr-only">Toggle navigation menu</span>
                     </Button>
                 </SheetTrigger>
-                <SheetContent side="left" className="flex flex-col p-0">
-                    <div className="flex h-[60px] items-center px-6 border-b">
+                <SheetContent side="left" className="flex flex-col p-0 bg-sidebar text-sidebar-foreground">
+                    <div className="flex h-[60px] items-center px-6 border-b border-sidebar-border">
                         <a href="/" className="flex items-center gap-2 font-semibold font-headline">
-                             <Package className="h-6 w-6" />
-                            <span>NovaX ERP</span>
+                             <Package className="h-6 w-6 text-sidebar-primary" />
+                            <span className="text-sidebar-foreground">MeERP</span>
                         </a>
                     </div>
                     <MainNav isMobile={true} />

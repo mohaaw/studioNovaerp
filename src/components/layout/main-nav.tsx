@@ -26,6 +26,8 @@ export function MainNav({ isMobile = false }: { isMobile?: boolean }) {
 
     const renderLink = (item: typeof navItems[0]) => {
         const isActive = pathname === item.href
+        const linkClasses = isMobile ? "text-sidebar-foreground" : "text-muted-foreground";
+        const activeClasses = isMobile ? "bg-sidebar-accent text-sidebar-accent-foreground" : "bg-accent text-accent-foreground"
 
         if (isCollapsed) {
             return (
@@ -34,8 +36,9 @@ export function MainNav({ isMobile = false }: { isMobile?: boolean }) {
                         <Link
                             href={item.href}
                             className={cn(
-                                "flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8",
-                                isActive && "bg-accent text-accent-foreground"
+                                "flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8",
+                                linkClasses,
+                                isActive && activeClasses
                             )}
                         >
                             <item.icon className="h-5 w-5" />
@@ -52,8 +55,11 @@ export function MainNav({ isMobile = false }: { isMobile?: boolean }) {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                    "flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary",
-                    isActive && "bg-accent text-primary"
+                    "flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary",
+                    linkClasses,
+                    isActive && activeClasses,
+                    isActive && isMobile && "text-sidebar-accent-foreground",
+                    isActive && !isMobile && "text-primary"
                 )}
             >
                 <item.icon className="h-4 w-4" />

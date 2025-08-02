@@ -59,7 +59,7 @@ export default function TeamPage() {
                   </TableCell>
                   <TableCell><Badge variant="outline">{user.role}</Badge></TableCell>
                   <TableCell>
-                    <Badge variant={user.status === 'Active' ? 'default' : 'destructive'} className={user.status === 'Active' ? 'bg-green-500/20 text-green-700' : 'bg-gray-500/20 text-gray-700'}>
+                    <Badge variant={user.status === 'Active' ? 'default' : 'secondary'}>
                       {user.status}
                     </Badge>
                   </TableCell>

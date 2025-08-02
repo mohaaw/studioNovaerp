@@ -18,9 +18,9 @@ export function KpiCard({ title, value, icon, description, trend }: KpiCardProps
       </CardHeader>
       <CardContent>
         <div className="text-2xl font-bold">{value}</div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
+            <div className="text-xs">{trend}</div>
             <p className="text-xs text-muted-foreground">{description}</p>
-            {trend && <div className="text-xs">{trend}</div>}
         </div>
       </CardContent>
     </Card>
