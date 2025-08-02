@@ -41,39 +41,39 @@
   }
 
   .dark {
-    --background: 240 2.8% 95.9%; /* Light Grey */
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 222.2 84% 4.9%;
+    --background: 240 10% 3.9%;
+    --foreground: 210 40% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 240 10% 3.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 265 82% 87%; /* Soft Lavender */
-    --primary-foreground: 262.1 83.3% 57.8%;
-    --secondary: 217.2 32.6% 17.5%;
+    --primary: 198 93% 60%;
+    --primary-foreground: 198 93% 20%;
+    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 198 93% 90%; /* Pale Sky Blue */
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
     --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 62.8% 50.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 262.1 83.3% 57.8%;
-    --chart-1: 262 83% 58%;
-    --chart-2: 180 70% 50%;
-    --chart-3: 300 80% 70%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 198 93% 60%;
+    --chart-1: 198 93% 60%;
+    --chart-2: 282 83% 68%;
+    --chart-3: 340 91% 65%;
     --chart-4: 30 90% 65%;
-    --chart-5: 340 80% 65%;
+    --chart-5: 120 80% 65%;
 
-    --sidebar-background: 222.2 84% 4.9%;
+    --sidebar-background: 240 10% 3.9%;
     --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 210 40% 98%;
-    --sidebar-primary-foreground: 222.2 84% 4.9%;
-    --sidebar-accent: 262.1 83.3% 57.8%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217.2 32.6% 17.5%;
-    --sidebar-ring: 262.1 83.3% 57.8%;
+    --sidebar-primary: 198 93% 60%;
+    --sidebar-primary-foreground: 198 93% 20%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 198 93% 60%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 198 93% 60%;
   }
 }
 
