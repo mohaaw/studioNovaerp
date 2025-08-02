@@ -48,7 +48,7 @@ export default function TeamPage() {
                   <TableCell>
                     <div className="flex items-center gap-3">
                       <Avatar>
-                        <AvatarImage src={`https://placehold.co/40x40.png?text=${user.name.charAt(0)}`} alt={user.name} />
+                        <AvatarImage src={`https://placehold.co/40x40.png`} alt={user.name} data-ai-hint="person" />
                         <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                       </Avatar>
                       <div>

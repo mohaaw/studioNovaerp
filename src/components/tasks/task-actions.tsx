@@ -75,7 +75,7 @@ export function TaskActions() {
                     <CardTitle className="text-base font-medium flex items-center justify-between">
                       {mockTasks.find(t => t.id === task.taskId)?.title}
                       <Badge variant={index < 3 ? "destructive" : "secondary"}>
-                         Score: {task.priority}
+                         Priority Score: {task.priority}
                       </Badge>
                     </CardTitle>
                   </CardHeader>

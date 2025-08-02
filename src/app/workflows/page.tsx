@@ -48,7 +48,9 @@ export default function WorkflowsPage() {
                   <TableCell className="font-medium">{wf.name}</TableCell>
                   <TableCell>
                     <div className="flex items-center gap-2">
-                        <span className="text-muted-foreground text-xs">{wf.trigger}</span>
+                        <Badge variant="outline">{wf.trigger.split(':')[0]}</Badge>
+                        <ArrowRight className="h-4 w-4 text-muted-foreground" />
+                        <span className="text-muted-foreground text-sm">{wf.trigger.split(':')[1]}</span>
                     </div>
                   </TableCell>
                   <TableCell>
