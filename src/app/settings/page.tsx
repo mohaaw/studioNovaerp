@@ -1,106 +1,138 @@
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { 
+  Building, 
+  Users, 
+  ShieldCheck, 
+  CreditCard, 
+  Mail, 
+  Briefcase, 
+  ShoppingCart, 
+  GanttChartSquare, 
+  HeartPulse, 
+  Factory, 
+  Truck, 
+  Globe, 
+  Link, 
+  SlidersHorizontal,
+  BrainCircuit,
+  FileLock
+} from "lucide-react";
+import Link from "next/link";
+
+const settingsModules = [
+  {
+    title: "Company Settings",
+    description: "Manage your organization's details, branding, and addresses.",
+    icon: <Building className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+  {
+    title: "Users & Permissions",
+    description: "Control user access, roles, and permission levels.",
+    icon: <Users className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+  {
+    title: "Security & Compliance",
+    description: "Configure security policies, 2FA, and data privacy.",
+    icon: <ShieldCheck className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+  {
+    title: "Financial Accounting",
+    description: "Set up chart of accounts, fiscal years, and currencies.",
+    icon: <CreditCard className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+  {
+    title: "Email & Notifications",
+    description: "Manage email templates, SMTP settings, and system alerts.",
+    icon: <Mail className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+  {
+    title: "CRM & Sales",
+    description: "Customize lead sources, sales funnels, and opportunity stages.",
+    icon: <Briefcase className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+  {
+    title: "Buying & Purchases",
+    description: "Configure supplier settings, purchase orders, and billing.",
+    icon: <ShoppingCart className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+  {
+    title: "Inventory & Stock",
+    description: "Manage warehouses, item variants, and stock entry types.",
+    icon: <GanttChartSquare className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+   {
+    title: "HR & Payroll",
+    description: "Set up salary structures, leave policies, and employee benefits.",
+    icon: <HeartPulse className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+   {
+    title: "Manufacturing",
+    description: "Define workstations, operations, and production settings.",
+    icon: <Factory className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+   {
+    title: "Website & Portal",
+    description: "Configure website theme, SEO settings, and customer portal.",
+    icon: <Globe className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+   {
+    title: "Integrations",
+    description: "Connect with third-party services like payment gateways and APIs.",
+    icon: <Link className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+  {
+    title: "Customization",
+    description: "Create custom fields, forms, and print formats.",
+    icon: <SlidersHorizontal className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+  {
+    title: "AI Configuration",
+    description: "Manage settings for Cosmic Insights and Prophecy Pricing.",
+    icon: <BrainCircuit className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+   {
+    title: "Blockchain Ledger",
+    description: "Configure settings for the immutable transaction ledger.",
+    icon: <FileLock className="h-8 w-8 text-primary" />,
+    href: "#"
+  },
+];
 
 export default function SettingsPage() {
   return (
     <div className="flex flex-col gap-8">
       <div>
-        <h1 className="text-3xl font-bold font-headline">Settings</h1>
-        <p className="text-muted-foreground">Manage your account and application settings.</p>
+        <h1 className="text-3xl font-bold font-headline">System Settings</h1>
+        <p className="text-muted-foreground">Configure and customize every aspect of NovaX ERP.</p>
       </div>
 
-      <Tabs defaultValue="profile" className="w-full">
-        <TabsList>
-          <TabsTrigger value="profile">Profile</TabsTrigger>
-          <TabsTrigger value="organization">Organization</TabsTrigger>
-          <TabsTrigger value="notifications">Notifications</TabsTrigger>
-          <TabsTrigger value="billing">Billing</TabsTrigger>
-        </TabsList>
-        <TabsContent value="profile">
-          <Card>
-            <CardHeader>
-              <CardTitle className="font-headline">Profile</CardTitle>
-              <CardDescription>Update your personal information.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="name">Full Name</Label>
-                <Input id="name" defaultValue="Current User" />
-              </div>
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" defaultValue="user@example.com" />
-              </div>
-            </CardContent>
-            <CardFooter>
-              <Button>Save Changes</Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
-        <TabsContent value="notifications">
-          <Card>
-            <CardHeader>
-                <CardTitle className="font-headline">Notifications</CardTitle>
-                <CardDescription>Manage how you receive notifications.</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-6">
-                <div className="flex flex-row items-center justify-between rounded-lg border p-4">
-                    <div className="space-y-0.5">
-                        <Label className="text-base">Email Notifications</Label>
-                        <p className="text-sm text-muted-foreground">Receive updates about tasks and mentions.</p>
-                    </div>
-                    <Switch defaultChecked />
-                </div>
-                 <div className="flex flex-row items-center justify-between rounded-lg border p-4">
-                    <div className="space-y-0.5">
-                        <Label className="text-base">Push Notifications</Label>
-                        <p className="text-sm text-muted-foreground">Get notified on your mobile device.</p>
-                    </div>
-                    <Switch />
-                </div>
-            </CardContent>
-            <CardFooter>
-                <Button>Save Preferences</Button>
-            </CardFooter>
-          </Card>
-        </TabsContent>
-        <TabsContent value="organization">
-             <Card>
-                <CardHeader>
-                <CardTitle className="font-headline">Organization</CardTitle>
-                <CardDescription>Manage your organization's settings.</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                <div className="space-y-2">
-                    <Label htmlFor="org-name">Organization Name</Label>
-                    <Input id="org-name" defaultValue="My Awesome Company" />
-                </div>
-                </CardContent>
-                <CardFooter>
-                <Button>Save Changes</Button>
-                </CardFooter>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        {settingsModules.map((module) => (
+          <Link href={module.href} key={module.title}>
+            <Card className="h-full hover:shadow-lg hover:border-primary/50 transition-all duration-200 cursor-pointer flex flex-col">
+              <CardHeader>
+                <div className="mb-4">{module.icon}</div>
+                <CardTitle className="font-headline text-lg">{module.title}</CardTitle>
+                <CardDescription className="text-xs">{module.description}</CardDescription>
+              </CardHeader>
             </Card>
-        </TabsContent>
-         <TabsContent value="billing">
-             <Card>
-                <CardHeader>
-                <CardTitle className="font-headline">Billing</CardTitle>
-                <CardDescription>Manage your subscription and payment methods.</CardDescription>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                    <div>
-                        <h3 className="font-medium">Current Plan</h3>
-                        <p className="text-muted-foreground text-sm">Pro Plan ($99/month)</p>
-                    </div>
-                     <Button variant="outline">Change Plan</Button>
-                </CardContent>
-            </Card>
-        </TabsContent>
-      </Tabs>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }
